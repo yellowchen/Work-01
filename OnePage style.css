@@ -1,0 +1,641 @@
+/* icon form */
+@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+/* 字形 */
+@import url("https://fonts.googleapis.com/css2?family=Limelight&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: limelight;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.phase {
+    padding: 80px 0 50px;
+}
+
+
+/* 01 Main */
+    .main-header {
+        background-color: #fff;
+        border-bottom: 2px solid #aaa;
+        /*置頂*/
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        /*置頂*/
+    }
+/*??置頂似乎會佔到banner的空間??*/
+
+    .navbar {
+        display: flex;
+        justify-content: space-between; /*logo與麵包屑就會各自靠左與靠右*/
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .nav-logo img {
+        max-width: 100%;
+        border-radius: 50%;
+        vertical-align: middle;
+    }
+
+    .nav-menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-item {
+        margin-left: 1rem;
+    }
+
+/*.nav-link hover後的變化*/
+    .nav-link {
+        color: #000;
+        font-size: 26px;
+        padding: 0 1em;
+        position: relative;
+    }
+
+    .nav-link::before {
+        content: "";
+        position: absolute;
+        border-bottom: 2px solid #ccc;
+
+        /*底線的位置*/
+        top: 0;
+        bottom: -5px;
+            /*hover前的位置*/
+        left: 50%;  /*中心點*/
+        right: 50%;  /*中心點*/
+        transition: .2s;
+            /*hover前的位置*/
+        /*底線的位置*/
+    }
+
+    .nav-link:hover::before {
+        /*hover後的位置*/
+        left: 0;  /*最左*/
+        right: 0;  /*最右*/
+    }
+/*.nav-link hover後的變化*/
+
+    .nav-item form {
+        display: flex;
+    }
+
+    .nav-item form input,
+    .nav-item form button {
+        border: none;
+        background: #eee;
+        padding: 5px 10px;
+        font-size: 20px;
+    }
+
+    .nav-item form input:focus {
+        outline: none;
+    }
+
+    .nav-item form input {
+        border-radius: 200px 0 0 200px;
+        max-width: 100px;
+    }
+
+    .nav-item form button {
+        border-radius: 0 200px 200px 0;
+    }
+
+
+/*麵包屑*/
+    .hamburger {
+        display: none;  /*在screen畫面基本尺寸下，不顯示*/
+    }
+
+    .bar {
+        display: block;  /*因為前面有設定display: flex，所以可以跟圖片保持同一行*/
+        width: 50px;
+        height: 5px;
+        margin: 12px auto;
+        background-color: #000;
+        transition: all .3s ease-in-out;
+
+    }
+/*麵包屑*/
+
+    /* 平板1024px */
+    @media screen and (max-width: 1024px) {
+        .nav-link {
+            font-size: 18px;
+            padding: 0 .5em;
+        }
+    }
+
+    /* 平板768px */
+    @media screen and (max-width: 768px) {
+        .nav-menu {
+            position: fixed;
+            width: 100%;
+            top: 8rem;
+            left: -100%; /*距離左邊-100%，等同於完全移出視窗範圍外*/
+            flex-direction: column;
+            background-color: rgba(238,238,238,1);
+            border-radius: 10px;
+            text-align: center;
+            transition: .3s;
+            box-shadow: 0 10px 27px rgba(0,0,0,.05);
+        }
+        
+        .nav-menu.active {
+            left: 0;
+            /*原本左邊距離設為0，物體位置至左
+            在這個情況下，原本是left: -100%;-->left: 0;，意味完全回到視窗範圍內*/
+        }
+
+    /*麵包屑變化: 三條線-->變成大X*/
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+            transform: translateY(17px) rotate(45deg);
+            /*先整條線下移17px(margin: 12px + 高: 5px，所以這邊是整條線下移至中間線的位置)，接著順時鐘旋轉45deg*/
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+            transform: translateY(-17px) rotate(-45deg);
+        }
+    /*麵包屑變化: 三條線-->變成大X*/
+
+        .nav-item {
+            margin: 2rem 0;
+        }
+
+        .hamburger {
+            display: block;
+            cursor: pointer;
+        }
+
+        .nav-item form input,
+        .nav-item form button {
+            background-color: #fff;
+        }
+
+    }
+
+
+/* 02 Banner */
+    .banner {
+        height: 100vh;
+        padding-top: 110px;
+        background: 
+        /* 0deg顏色順序是由下至上，115deg是左上至右下的顏色順序(所以顏色分割線是，左下至右上分割線 */
+        linear-gradient(115deg, #fa0 50%, transparent 50%) center center / cover, 
+        url("https://picsum.photos/1200/1200/?random=10")right center / cover;
+    }
+
+    .banner-txt {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        color: #fff;
+        text-shadow:
+		1px 1px 3px black;
+    }
+
+    .banner-txt h1 {
+        font-size: 80px;
+        border-bottom: 5px solid #fff;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+    }
+
+    .banner-txt small {
+        display: block; /*因為還蓋在h1中，若要換行，要改為block*/
+        font-size: 50px;
+    }
+
+    .banner-txt h2 {
+        font-size: 50px;
+    }
+
+    .banner-txt p {
+        font-size: 30px;
+        margin-top: 10px;
+    }
+
+    @media screen and (max-width: 430px) {
+        .banner-txt h1 {
+            font-size: 50px;
+        }
+
+        .banner-txt small, 
+        .banner-txt h2 {
+            font-size: 30px;
+        }
+
+        .banner-txt p {
+            font-size: 18px;
+        }
+    }
+
+
+/* 03 Intro */
+
+    /*各區title統一格式*/
+    .title-txt {
+        padding-bottom: 20px;
+        text-align: center;
+    }
+    .title-txt h1 {
+        width: 100%;
+        font-size: 80px;
+        padding-bottom: 30px;
+        display: flex;  /*虛擬元素會「繼承」原本元素的屬性，所以h1設定flex，虛擬元素的線條，就會跟著row排列*/
+    }
+
+    /*虛擬元素本身就是display:inline-block的屬性*/
+    .title-txt h1::before,
+    .title-txt h1::after {
+        content: "";
+        height: 5px;
+        width: 0px;
+        margin: auto;  /*有設定高，所以設定auto，就會垂直置中*/
+        flex-grow: 1;
+        background-color: #000;
+    }
+
+    .title-txt h1::before {
+        margin-right: .5em;
+    }
+
+    .title-txt h1::after {
+        margin-left: .5em;
+    }
+
+    .title-txt p {
+        font-size: 18px;
+    }
+    /*各區title統一格式*/
+
+    .intro-props {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        margin-top: 50px;
+    }
+
+    .props {
+        max-width: 330px;
+        margin: 70px 15px 50px;
+        text-align: center;
+        border: 10px solid #000;
+        border-radius: 20px;
+    }
+
+    .props .icon {
+        font-size: 85px;
+        width: 150px;
+        height: 150px;
+        line-height: 150px;
+        /* 有設定line-height才能讓icon置中 */
+        border-radius: 50%;
+        margin: -85px auto 0;
+        /* 與margin-bottom: -75px;不同 */
+        background-color: #fff;
+        position: relative;
+    }
+
+    .props .icon::before {
+        content: "";
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border-top: 10px solid #000;
+        border-right: 10px solid #000;
+        border-bottom: 10px solid transparent;
+        border-left: 10px solid transparent;
+        left: -10px;
+        top: -10px;
+        transform: rotate(-45deg);
+    }
+
+    .props:hover .fa {
+        animation: shake .2s linear infinite alternate;
+    }
+
+    .props-txt h3 {
+        font-size: 20px;
+    }
+
+    .props-txt p {
+        font-size: 16px;
+        padding: 15px 30px 30px;
+    }
+
+    @keyframes shake {
+        from {transform: rotate(10deg);}
+        to {transform: rotate(-10deg);}
+    }
+
+    @media screen and (max-width: 280px) {
+        .props .icon {
+            font-size: 50px;
+            width: 90px;
+            height: 90px;
+            line-height: 90px;
+            margin: -50px auto 0;
+        }
+
+        .props .icon::before {
+            width: 90px;
+            height: 90px;
+        }
+    }
+
+
+/* 04 Product */
+    .product {
+        width: 100%;
+        background-color: #eee;
+    }
+
+    .product-all {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .product-item {
+        max-width: 300px;
+        margin: 70px 15px 50px;
+        text-align: center;
+        /* border-radius: 20px; */
+        background-color: #fff;
+
+        transform: translateY(0px);
+        transition: .5s;
+    }
+
+    .product-item:hover {
+        background-image: linear-gradient(0deg, #fB8076, #FEB85D 30%);
+        color: #fff;
+        transform: translateY(-50px);
+    }
+
+    .product-item img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .product-item:hover .product-txt::before {
+        border-left: 150px solid #FEB85D;
+        border-right: 150px solid #FEB85D;
+        border-bottom: 2px solid #FEB85D;
+    }
+
+    .product-item:hover .product-txt h3{
+        border-bottom: 2px solid #fff;
+    }
+
+    .product-txt {
+        padding: 10px 30px 50px;
+        position: relative;
+    }
+
+    .product-txt::before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        
+        top: -85px;
+        left: 0px;
+        
+        border-left: 150px solid #fff;
+        border-top: 81px solid transparent;
+        border-right: 150px solid #fff;
+        border-bottom: 2px solid #fff;
+    }
+
+
+    .product-txt h3 {
+        font-size: 20px;
+        border-bottom: 1px solid #000;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+        transition: .05s;
+        /* position: relative; */
+    }
+
+    .product-txt p {
+        font-size: 16px;
+        padding: 0 10px;
+        transition: .05s;
+    }
+
+    @media screen and (max-width: 390px) {
+
+        .product-item {
+            width: 260px;
+        }
+
+        .product-item:hover .product-txt::before {
+            border-left: 130px solid #FEB85D;
+            border-right: 130px solid #FEB85D;
+            border-bottom: 2px solid #FEB85D;
+        }
+
+        .product-txt::before {
+            border-left: 130px solid #fff;
+            border-top: 81px solid transparent;
+            border-right: 130px solid #fff;
+            border-bottom: 2px solid #fff;
+        }
+    }
+
+    @media screen and (max-width: 280px) {
+
+        .product-item {
+            width: 190px;
+        }
+
+        .product-item:hover .product-txt::before {
+            border-left: 95px solid #FEB85D;
+            border-right: 95px solid #FEB85D;
+            border-bottom: 2px solid #FEB85D;
+        }
+
+        .product-txt::before {
+            border-left: 95px solid #fff;
+            border-top: 50px solid transparent;
+            border-right: 95px solid #fff;
+            border-bottom: 2px solid #fff;
+
+            top: -55px;
+        }
+    }
+
+/* 05 SERVICE */
+    .service-all {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .service-item {
+        width: 400px;
+        height: 400px;
+        margin: 70px 15px 50px;
+        
+        box-shadow: 0px 10px 30px #aaa;
+        border: 1px solid #000;
+        display: flex;
+    }
+
+    .service-item img {
+        max-width: 50%;
+        object-fit: cover; /* 圖片的填滿方式 */
+    }
+
+    .service-txt {
+        width: 50%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .service-txt h3 {
+        padding: 10px 0;
+        font-size: 20px;
+    }
+
+    .service-txt p {
+        font-size: 16px;
+    }
+
+    .service-txt .btn {
+        align-self: flex-end;
+        border: 1px solid #aaa;
+        border-radius: 20px;
+        padding: 5px;
+        font-size: 16px;
+        color: #aaa;
+
+        margin-top: auto; /* 將btn置尾端的關鍵 */
+    }
+
+    .service-txt .btn:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    @media screen and (max-width: 430px) {
+        .title-txt h1 {
+            font-size: 40px;
+        }
+    }
+
+    @media screen and (max-width: 390px) {
+        .title-txt h1 {
+            font-size: 30px;
+        }
+
+        .service-txt h3 {
+            font-size: 18px;
+        }
+
+        .service-txt p {
+            font-size: 13px;
+        }
+
+        .service-txt .btn {
+            font-size: 13px;
+        }
+    }
+
+
+/* 06 FOOTER */
+    .footer {
+        background-image: linear-gradient(0deg, #185a9d, #43cea2);
+    }
+
+    .footer .container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .footer-item {
+        margin: 30px 50px;
+        padding: 20px;
+        width: 300px;
+        border-radius: 10px;
+        background-color: rgba(255,255,255,.1);
+        backdrop-filter: blur(5px);
+    }
+
+    .footer-title h3 {
+        font-size: 20px;
+        border-bottom: 1px dotted #000;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+
+    .footer-txt .fa {
+        font-size: 18px;
+    }
+
+    .footer-txt li {
+        padding: 5px 0;
+    }
+
+    .footer-item form {
+        display: flex;
+        width: 100%;
+        margin: auto 0;
+    }
+
+    .footer-item input[type="text"],
+    .footer-item input[type="submit"] {
+        border: none;
+        padding: 5px 10px;
+    }
+    
+
+    .footer-item input[type="text"] {
+        width: 0;
+        flex-grow: 1;
+    }
+
+    .footer-item input[type="submit"] {
+        background-color: #000;
+        color: #fff;
+    }
+
+/* 07 COPYRIGHT */
+    .copyright {
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        padding: 15px 0;
+        font-size: 14px;
+    }
