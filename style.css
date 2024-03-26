@@ -3,27 +3,31 @@
 
 /* 字形 */
 @import url("https://fonts.googleapis.com/css2?family=Limelight&display=swap");
-
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");
 
 * {
     box-sizing: border-box;
-    margin: 0;
     padding: 0;
+    margin: 0;
     list-style: none;
     text-decoration: none;
     font-family: limelight;
 }
 
 .container {
-    width: 80%;
+    padding: 6vw 4vw 4vw;
     margin: 0 auto;
 }
 
-.phase {
+/* .phase {
     padding: 80px 0 50px;
-}
+} */
 
+@media screen and (max-width: 768px)  {
+    .container {
+        padding: 4vw 2vw;
+    }
+}
 
 /* 01 Main */
     .main-header {
@@ -43,7 +47,7 @@
         display: flex;
         justify-content: space-between; /*logo與麵包屑就會各自靠左與靠右*/
         align-items: center;
-        padding: 1rem;
+        padding: 1vw 2vw;
     }
 
     .nav-logo img {
@@ -66,10 +70,11 @@
     .nav-link {
         color: #000;
         font-size: 26px;
-        padding: 0 1em;
+        padding: 0 1rem;
         position: relative;
     }
 
+    /* 下底線 */
     .nav-link::before {
         content: "";
         position: absolute;
@@ -91,7 +96,7 @@
         left: 0;  /*最左*/
         right: 0;  /*最右*/
     }
-/*.nav-link hover後的變化*/
+        /*.nav-link hover後的變化*/
 
     .nav-item form {
         display: flex;
@@ -111,7 +116,7 @@
 
     .nav-item form input {
         border-radius: 200px 0 0 200px;
-        max-width: 100px;
+        max-width: 120px;
     }
 
     .nav-item form button {
@@ -199,7 +204,7 @@
 /* 02 Banner */
     .banner {
         height: 100vh;
-        padding-top: 110px;
+        padding-top: 100px;
         background: 
         /* 0deg顏色順序是由下至上，115deg是左上至右下的顏色順序(所以顏色分割線是，左下至右上分割線 */
         linear-gradient(115deg, #fa0 50%, transparent 50%) center center / cover, 
@@ -259,7 +264,6 @@
 
     /*各區title統一格式*/
     .title-txt {
-        padding-bottom: 20px;
         text-align: center;
     }
     .title-txt h1 {
@@ -297,13 +301,13 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-
+        align-items: center;
         margin-top: 50px;
     }
 
     .props {
-        max-width: 330px;
-        margin: 70px 15px 50px;
+        max-width: 320px;
+        margin: 5vw 2vw 2vw;
         text-align: center;
         border: 10px solid #000;
         border-radius: 20px;
@@ -355,6 +359,27 @@
         to {transform: rotate(-10deg);}
     }
 
+    @media screen and (max-width: 1200px) {
+        .props {
+            margin: 6vw 2vw 5vw;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .intro-props {
+            flex-direction: column;
+        }
+        .props {
+            margin: 8vw 0;
+        }
+    }
+
+    @media screen and (max-width: 576px) {
+        .props {
+            margin: 14vw 0;
+        }
+    }
+
     @media screen and (max-width: 280px) {
         .props .icon {
             font-size: 50px;
@@ -385,7 +410,7 @@
 
     .product-item {
         max-width: 300px;
-        margin: 70px 15px 50px;
+        margin: 1vw;
         text-align: center;
         /* border-radius: 20px; */
         background-color: #fff;
@@ -501,7 +526,7 @@
     }
 
     .service-item {
-        width: 400px;
+        width: 330px;
         height: 400px;
         margin: 70px 15px 50px;
         
@@ -585,9 +610,9 @@
     }
 
     .footer-item {
-        margin: 30px 50px;
-        padding: 20px;
-        width: 300px;
+        min-width: 250px;
+        padding: 1vw;
+        margin: 1vw;
         border-radius: 10px;
         background-color: rgba(255,255,255,.1);
         backdrop-filter: blur(5px);
@@ -596,8 +621,8 @@
     .footer-title h3 {
         font-size: 20px;
         border-bottom: 1px dotted #000;
-        padding-bottom: 20px;
-        margin-bottom: 20px;
+        padding-bottom: 1vw;
+        margin-bottom: 1vw;
     }
 
     .footer-txt .fa {
@@ -605,7 +630,7 @@
     }
 
     .footer-txt li {
-        padding: 5px 0;
+        padding: .5rem 0;
     }
 
     .footer-item form {
@@ -617,7 +642,7 @@
     .footer-item input[type="text"],
     .footer-item input[type="submit"] {
         border: none;
-        padding: 5px 10px;
+        padding: .5rem 1rem;
     }
     
 
@@ -631,11 +656,17 @@
         color: #fff;
     }
 
+    @media screen and (max-width: 576px) {
+        .footer-item {
+            margin: 2vw 1vw;
+        }
+    }
+
 /* 07 COPYRIGHT */
     .copyright {
         background-color: #000;
         color: #fff;
         text-align: center;
-        padding: 15px 0;
+        padding: 1rem 0;
         font-size: 14px;
     }
